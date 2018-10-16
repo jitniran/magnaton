@@ -1,0 +1,16 @@
+.product-card-wide.mdl-card {
+  width: 100%;
+}
+.product-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url("../images/pcb-assembly-1.jpg") center / cover;
+}
+
+.list-control {
+  width: 300px;
+}
+
+.list-radio {
+  display: inline;
+}
