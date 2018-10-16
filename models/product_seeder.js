@@ -1,7 +1,11 @@
-var Product = require("../models/products");
 var mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/pcb");
+mongoose.connect(
+  "mongodb://localhost:27017/pcb",
+  { useNewUrlParser: true }
+);
+
+var Product = require("../models/products");
 
 var product = new Product({
   title: "P1",
@@ -20,6 +24,6 @@ var product = new Product({
   quantity: 5
 });
 
-product.save();
-
-mongoose.disconnect();
+product.save(function(err, product) {
+  mongoose.disconnect();
+});
