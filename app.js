@@ -6,6 +6,7 @@ var logger = require("morgan");
 var expressHbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
+const passportSetup = require("./config/passport_setup");
 
 var app = express();
 
