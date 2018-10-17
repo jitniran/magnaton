@@ -7,7 +7,9 @@ var expressHbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 const passportSetup = require("./config/passport_setup");
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
 
 var app = express();
@@ -20,22 +22,27 @@ mongoose.connect(
 app.engine(".hbs", expressHbs({ defaultLayout: "layout", extname: ".hbs" }));
 app.set("view engine", ".hbs");
 
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: ["j1se45544454059405"]
+  session({
+    secret: "j1wewe84959",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000
+    }
   })
 );
 //initialize session
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
