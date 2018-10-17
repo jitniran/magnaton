@@ -12,7 +12,11 @@
             <a class="mdl-navigation__link" href="">User
                 <i class="material-icons">account_circle</i>
             </a>
+            {{# if user}}
+            <a class="mdl-button" href="/logout">Logout</a>
+            {{else}}
             <a class="mdl-button" href="/google">Login</a>
+            {{/if}}
         </nav>
     </div>
 </header>
@@ -21,6 +25,11 @@
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="">Cart</a>
         <a class="mdl-navigation__link" href="">User</a>
-        <a class="mdl-navigation__link" href="">Login</a>
+        {{# if user}}
+        <a class="mdl-navigation__link" href="/logout">Logout</a>
+        {{else}}
+        <a class="mdl-navigation__link" href="/google">Login</a>
+        {{/if}}
+
     </nav>
 </div>

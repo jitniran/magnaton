@@ -7,6 +7,8 @@ var expressHbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 const passportSetup = require("./config/passport_setup");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 
 var app = express();
 
@@ -17,6 +19,16 @@ mongoose.connect(
 // view engine setup
 app.engine(".hbs", expressHbs({ defaultLayout: "layout", extname: ".hbs" }));
 app.set("view engine", ".hbs");
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["j1se45544454059405"]
+  })
+);
+//initialize session
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger("dev"));
 app.use(express.json());
