@@ -1,0 +1,35 @@
+{{!-- three options --}}
+<ul class="mdl-list">
+    <label>{{attribute}} : </label>
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            {{opt1}}
+        </span>
+        <span class="mdl-list__item-secondary-action">
+            <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{attribute}}{{opt1}}">
+                <input type="radio" id="list-{{attribute}}{{opt1}}" class="mdl-radio__button" name="{{attribute}}" value="({{attribute}},{{opt1}},0)"
+                    checked />
+            </label>
+        </span>
+    </li>
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            {{opt2}}
+        </span>
+        <span class="mdl-list__item-secondary-action">
+            <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{attribute}}{{opt2}}">
+                <input type="radio" id="list-{{attribute}}{{opt2}}" class="mdl-radio__button" name="{{attribute}}" value="({{attribute}},{{opt2}},1)" />
+            </label>
+        </span>
+    </li>
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            {{opt3}}
+        </span>
+        <span class="mdl-list__item-secondary-action">
+            <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{attribute}}{{opt3}}">
+                <input type="radio" id="list-{{attribute}}{{opt3}}" class="mdl-radio__button" name="{{attribute}}" value="({{attribute}},{{opt3}},2)" />
+            </label>
+        </span>
+    </li>
+</ul>
