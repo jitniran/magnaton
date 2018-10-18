@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var paycontroller = require("../controller/payController");
 
 const authCheck = function(req, res, next) {
   if (!req.user) {
-    router.redirect("/");
+    res.redirect("/");
   } else {
     // if logged in
     next();
@@ -38,7 +39,7 @@ router.get(
 );
 
 //redirect URI
-router.get("/google/redirect", passport.authenticate("google"), function(
+router.get("/gredirect", passport.authenticate("google"), function(
   req,
   res,
   next
@@ -51,5 +52,11 @@ router.get("/logout", function(req, res, next) {
   req.logout();
   res.redirect("/");
 });
+
+router.get("/user/profile", authCheck, function(req, res, next) {
+  res.render("profile", { user: req.user });
+});
+
+router.post("/payment/payu", paycontroller.payUMoneyPayment);
 
 module.exports = router;

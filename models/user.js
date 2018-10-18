@@ -3,13 +3,19 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   username: String,
+  name: String,
   googleid: { type: Number, required: true },
   shippingAddress: String,
   shippingCity: String,
-  billingAddres: String,
+  shippingState: String,
+  shippingPin: Number,
+  billingAddress: String,
   billingCity: String,
+  billingState: String,
+  billingPin: Number,
   phone: Number,
-  email: String
+  email: String,
+  updated: Boolean
 });
 
 const User = mongoose.model("User", userSchema);

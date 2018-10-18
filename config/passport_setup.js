@@ -17,7 +17,7 @@ passport.use(
   new GoogleStrategy(
     {
       //options
-      callbackURL: "/google/redirect",
+      callbackURL: "/gredirect",
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret
     },
@@ -30,12 +30,13 @@ passport.use(
         } else {
           new User({
             username: profile.displayName,
-            googleid: profile.id
+            googleid: profile.id,
+            updated: false
           })
             .save()
             .then(newUser => {
               console.log("new user " + newUser);
-              done(null, currentUser);
+              done(null, newUser);
             });
         }
       });

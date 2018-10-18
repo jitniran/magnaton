@@ -7,9 +7,9 @@ var expressHbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 const passportSetup = require("./config/passport_setup");
-// const cookieSession = require("cookie-session");
+const cookieSession = require("cookie-session");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+// const MongoStore = require("connect-mongo")(session); use mongo store for heavy lifting
 const passport = require("passport");
 
 var app = express();
@@ -27,17 +27,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(
-  session({
-    secret: "j1wewe84959",
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000
-    }
-  })
-);
+// app.use(
+//   session({
+//     secret: "hfhfjdhfjdfejr",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+//     cookie: {
+//       maxAge: 24 * 60 * 60 * 1000
+//     }
+//   })
+// );
+
+// app.use(
+//   cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: ["3463t4brh3r83ru39r"]
+//   })
+// );
 //initialize session
 app.use(passport.initialize());
 app.use(passport.session());
