@@ -71,3 +71,18 @@ function calc(
   return totalPrice;
 }
 
+function getSelectedVariables() {
+  let product1 = document.getElementById("product1");
+  let inputs = product1.getElementsByTagName("input");
+  let p1 = [];
+  for (let i = 0; i < inputs.length; i++) {
+    let ele = inputs[i];
+    if ((ele.type = "text")) {
+      // text
+    } else if (ele.type == "radio" && ele.checked) {
+      let attribute,
+        option = ele.value.split(",");
+      p1.push(attribute, option);
+    }
+  }
+}
