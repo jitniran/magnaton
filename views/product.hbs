@@ -1,6 +1,7 @@
 <div class="mdl-grid">
+    {{#each products}}
     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-        {{> product_card }}
+        {{> product_card product=this }}
     </div>
-    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">4 (6 tablet)</div>
+    {{/each}}
 </div>

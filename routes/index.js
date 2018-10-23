@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var paycontroller = require("../controller/payController");
+const Product = require("../models/product");
 
 const authCheck = function(req, res, next) {
   if (!req.user) {
@@ -14,20 +15,21 @@ const authCheck = function(req, res, next) {
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  if (req.user) {
-    res.render("index", { title: "Magnaton", user: req.user });
-  } else {
-    res.render("index", { title: "Magnaton", user: false });
-  }
+  res.render("index", {
+    title: "Magnaton",
+    user: req.user
+  });
 });
 
 // GET product page
 router.get("/product", function(req, res, next) {
-  if (req.user) {
-    res.render("product", { title: "Magnaton", user: req.user });
-  } else {
-    res.render("product", { title: "Magnaton" });
-  }
+  Product.find().then(products => {
+    res.render("product", {
+      title: "Magnaton",
+      products: products,
+      user: req.user
+    });
+  });
 });
 
 //auth with google
@@ -44,7 +46,7 @@ router.get("/gredirect", passport.authenticate("google"), function(
   res,
   next
 ) {
-  res.redirect("/product");
+  res.redirect("/");
 });
 
 //logout

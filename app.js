@@ -19,7 +19,14 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 // view engine setup
-app.engine(".hbs", expressHbs({ defaultLayout: "layout", extname: ".hbs" }));
+app.engine(
+  ".hbs",
+  expressHbs({
+    defaultLayout: "layout",
+    extname: ".hbs",
+    helpers: require("./public/javascripts/helpers")
+  })
+);
 app.set("view engine", ".hbs");
 
 app.use(logger("dev"));
@@ -39,12 +46,12 @@ app.use(cookieParser());
 //   })
 // );
 
-// app.use(
-//   cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: ["3463t4brh3r83ru39r"]
-//   })
-// );
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["3463t4brh3r83ru39r"]
+  })
+);
 //initialize session
 app.use(passport.initialize());
 app.use(passport.session());

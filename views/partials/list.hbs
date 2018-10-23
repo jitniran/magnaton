@@ -1,29 +1,20 @@
-{{!-- type --}}
-{{> twoOptions opt1="Single PCB" opt2="Panel PCB" attribute="Type" }}
-
-{{!-- layers --}}
-{{> twoOptions opt1="1" opt2="2" attribute="Layers" }}
-
-{{!-- copper thickness --}}
-{{> twoOptions opt1="1" opt2="2" attribute="Copper Thickness"}}
-
-{{!-- solder mask color --}}
-{{> twoOptions opt1="Green" opt2="White" attribute="Solder Mask Color"}}
-
-{{!-- silkscreen color --}}
-{{> twoOptions opt1="White" opt2="Black" attribute="SilkScreen Color"}}
-
-{{!-- surface finish --}}
-{{> twoOptions opt1="HASL with Lead" opt2="None" attribute="Surface Finish"}}
-
-{{!-- minimun spacing --}}
-{{> threeOptions opt1="0.3" opt2="0.4" opt3="0.5" attribute="Minimum Spacing"}}
-
-{{!-- minimun hole --}}
-{{> threeOptions opt1="0.3" opt2="0.4" opt3="0.5" attribute="Minimum Hole"}}
-
-{{!-- substrate --}}
-{{> threeOptions opt1="FR4" opt2="FR1" opt3="Aluminium" attribute="Substrate"}}
-
-{{!-- thickness --}}
-{{> threeOptions opt1="1.6" opt2="2" opt3="1.2" attribute="Thickness"}}
+<ul class="mdl-list">
+    {{#each product.items }}
+    {{#if @index}}
+    {{ stringHelper @key}}
+    {{/if}}
+    {{#each this }}
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            {{this.name}}
+        </span>
+        <span class="mdl-list__item-secondary-action">
+            <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{@../key}}-{{this.name}}">
+                <input type="radio" id="list-{{@../key}}-{{this.name}}" class="mdl-radio__button" name="{{@../key}}[{{this.name}}]"
+                    value="{{this.price}}" />
+            </label>
+        </span>
+    </li>
+    {{/each}}
+    {{/each}}
+</ul>
