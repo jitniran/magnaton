@@ -1,20 +1,36 @@
+<div class="div-inline mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="height">
+    <label class="mdl-textfield__label" for="height">height</label>
+</div>
+<div class="div-inline mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="width">
+    <label class="mdl-textfield__label" for="width">width</label>
+</div>
+<div class="div-inline mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="quantity">
+    <label class="mdl-textfield__label" for="quantity">quantity</label>
+</div>
 <ul class="mdl-list">
-    {{#each product.items }}
-    {{#if @index}}
-    {{ stringHelper @key}}
-    {{/if}}
-    {{#each this }}
-    <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-            {{this.name}}
-        </span>
-        <span class="mdl-list__item-secondary-action">
-            <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{@../key}}-{{this.name}}">
-                <input type="radio" id="list-{{@../key}}-{{this.name}}" class="mdl-radio__button" name="{{@../key}}[{{this.name}}]"
-                    value="{{this.price}}" />
-            </label>
-        </span>
-    </li>
-    {{/each}}
-    {{/each}}
+    <div id="prodcut-1">
+        {{#each product.items }}
+        <div class="mdl-grid">
+            {{#if @index}}
+            <label class="mdl-cell mdl-cell--3-col">{{ stringHelper @key}} :</label>
+            {{/if}}
+            {{#each this }}
+            <li class="mdl-list__item mdl-cell--3-col">
+                <span class="mdl-list__item-primary-content">
+                    {{this.name}}
+                </span>
+                <span class="mdl-list__item-secondary-action">
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{@../key}}-{{this.name}}">
+                        <input type="radio" id="list-{{@../key}}-{{this.name}}" class="mdl-radio__button" name="{{@../key}}"
+                            value="{{this.price}}" />
+                    </label>
+                </span>
+            </li>
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
 </ul>
