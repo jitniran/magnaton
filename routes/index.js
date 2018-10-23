@@ -59,6 +59,10 @@ router.get("/user/profile", authCheck, function(req, res, next) {
   res.render("profile", { user: req.user });
 });
 
-router.post("/payment/payu", paycontroller.payUMoneyPayment);
+router.post("/payment/payu/payment", paycontroller.payUMoneyPayment);
+router.post("/payment/payu/response", paycontroller.payUMoneyPayment);
+router.get("/checkout", function(req, res, next) {
+  res.render("checkout");
+});
 
 module.exports = router;

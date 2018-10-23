@@ -1,19 +1,24 @@
-var RequestData = {
-  key: "rjQUPktU",
-  txnid: "123456789",
-  hash: "defdfaadgerhetiwerer",
-  amount: "1",
-  firstname: "Jaysinh",
-  email: "dummyemail@dummy.com",
-  phone: "6111111111",
-  productinfo: "Bag",
-  surl: "https://sucess-url.in",
-  furl: "https://fail-url.in"
-};
-
 var Handler = {
   responseHandler: function(BOLT) {
     // your payment response Code goes here, BOLT is the response object
+    fetch("payment/payu/response", {
+      method: "POST",
+
+      headers: {
+        Accept: "application/json",
+
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(response.response)
+    })
+      .then(function(a) {
+        return a.json();
+      })
+
+      .then(function(json) {
+        console.log(json);
+      });
   },
   catchException: function(BOLT) {
     // the code you use to handle the integration errors goes here
@@ -21,5 +26,14 @@ var Handler = {
 };
 
 function launchPayu() {
-  bolt.launch();
+  fetch("/payment/payu/payment", {
+    method: "POST" // *GET, POST, PUT, DELETE, etc.
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(myJson);
+      bolt.launch(myJson, Handler);
+    });
 }
