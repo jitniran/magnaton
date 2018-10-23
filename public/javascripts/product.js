@@ -1,67 +1,42 @@
-function calc(
-  size,
-  quantity,
-  layersOpt,
-  substrateOpt,
-  thicknessOpt,
-  copperOpt,
-  spacingOpt,
-  holeOpt,
-  solderMaskCOpt,
-  surfaceFinishOpt,
-  state
-) {
+const p1 = [];
+function calculatePrice(height, width, quantity, items) {
   //options of attributes
-  let deliveryCharge = 0;
-  if ((state = "karnataka")) {
-    deliveryCharge = 60;
-  } else {
-    deliveryCharge = 75;
-  }
   let tax = 0.18;
 
-  let tax = 0;
   let totalPrice = 0;
-  let z = size.height * size.width;
+  let z = height * width;
 
   let f = z * p1.quantity;
 
-  layersPrice = f * price.layers[layersOpt];
-  substratePrice = f * price.substrate[substrateOpt];
-  thicknessPrice = f * price.thickness[thicknessOpt];
-  copperPrice = f * price.copper[copperOpt];
-  spacingPrice = f * price.spacing[spacingOpt];
-  holePrice = f * price.hole[holeOpt];
-  solderMaskCPrice = f * price.solderMaskC[solderMaskCOpt];
-  surfaceFinishPrice = f * price.surfaceFinish[surfaceFinishOpt];
-
-  totalPrice =
-    layersPrice +
-    substratePrice +
-    thicknessPrice +
-    copperPrice +
-    spacingPrice +
-    holePrice +
-    solderMaskCPrice +
-    surfaceFinishPrice +
-    deliveryCharge;
+  items.each(item => {
+    totalPrice += f * item[2];
+  });
 
   totalPrice += tax * totalPrice;
   return totalPrice;
 }
 
-function getSelectedVariables() {
+function product1(buy) {
   let product1 = document.getElementById("product1");
   let inputs = product1.getElementsByTagName("input");
-  let p1 = [];
   for (let i = 0; i < inputs.length; i++) {
     let ele = inputs[i];
     if ((ele.type = "text")) {
-      // text
+      height = product1.getElementById("height").value;
+      width = product1.getElementById("width").value;
+      quantity = product1.getElementById("quanity").value;
     } else if (ele.type == "radio" && ele.checked) {
-      let attribute,
-        option = ele.value.split(",");
-      p1.push(attribute, option);
+      option = ele.value.split(",");
+      p1.push(option);
     }
   }
+  if (buy) {
+    calc(height, width, quantity, p1);
+  } else {
+    buy(height, width, quanity, p1);
+  }
+}
+
+function buy(height, width, quanity, items) {
+  // payu integration
 }
