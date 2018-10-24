@@ -10,7 +10,7 @@ var Handler = {
         "Content-Type": "application/json"
       },
 
-      body: JSON.stringify(response.response)
+      body: JSON.stringify(BOLT.response)
     })
       .then(function(a) {
         return a.json();
