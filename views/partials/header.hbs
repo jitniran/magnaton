@@ -1,24 +1,32 @@
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Magnaton</span>
+        <span class="mdl-layout-title">
+            <img class="magnaton-image" src="/images/logo.png" />
+        </span>
+        <span class="title-bold mdl-layout-title"> Magnaton Innovations </span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">User
-                <i class="material-icons">account_circle</i>
-            </a>
             {{#if user}}
-            <a class="mdl-button" href="/logout">Logout</a>
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/logout">Logout</a>
             {{else}}
-            <a class="mdl-button" href="/google">Login</a>
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/google">Login</a>
             {{/if}}
         </nav>
     </div>
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+        <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Home</a>
+        <a href="#scroll-tab-2" class="mdl-layout__tab">Instant Quote</a>
+        <a href="#scroll-tab-3" class="mdl-layout__tab">PCB Capabilities</a>
+        <a href="#scroll-tab-4" class="mdl-layout__tab">Home Automation</a>
+        <a href="#scroll-tab-5" class="mdl-layout__tab">About Us</a>
+        <a href="#scroll-tab-6" class="mdl-layout__tab">Contact Us</a>
+    </div>
 </header>
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-    <span class="mdl-layout-title">Title</span>
+    <span class="mdl-layout-title">Magnaton</span>
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="">User</a>
         {{# if user}}

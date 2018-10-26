@@ -18,7 +18,8 @@ const authCheck = function(req, res, next) {
 router.get("/", function(req, res, next) {
   res.render("index", {
     title: "Magnaton",
-    user: req.user
+    user: req.user,
+    layout: "layout_index"
   });
 });
 
@@ -68,5 +69,17 @@ router.post("/orders/new", orderController.newOrder);
 router.get("/checkout", function(req, res, next) {
   res.render("checkout");
 });
+
+//pages
+
+router.get("/instant_quote", function(req, res, next) {
+  res.render("instant_quote", { user: req.user });
+});
+
+router.get("/aboutpcb", function(req, res, next) {});
+
+router.get("/homeautomation", function(req, res, next) {});
+
+router.get("/contact", function(req, res, next) {});
 
 module.exports = router;

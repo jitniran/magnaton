@@ -7,9 +7,189 @@
   background: url("/images/pcb-assembly-1.jpg") center / cover;
 }
 
-.header-css {
-  background-color: #fff;
-}
 .div-inline {
   width: 20%;
+}
+.order-pcb {
+  text-align: center;
+  padding: 2em;
+  min-height: 200px;
+}
+.order-pcb > .mdl-card {
+  width: 100px;
+  max-height: 100px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.material-icons.md-72 {
+  font-size: 72px;
+}
+
+.magnaton-image {
+  height: 38px;
+  width: auto;
+}
+
+.title-bold {
+  font-weight: bold;
+}
+
+.product-card {
+  height: 320px;
+}
+
+.product-card a {
+  font-weight: bold;
+  padding: 0.4em;
+}
+.services {
+  background-color: #e3e0e6;
+}
+.services h3 {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 0.3em;
+  margin: 0;
+}
+
+.grid__item {
+  height: calc(100vh - 40px);
+  max-height: 360px;
+  max-width: 100%;
+  background: #ddd;
+  padding: 100px 0;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(
+    0,
+    0,
+    0
+  ); /* Solves Safari bug because of SVG clipping mask */
+}
+.color-8 {
+  background: #10435a;
+}
+
+.grid__item p {
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 0.3em;
+  max-width: 25%;
+  text-align: left;
+}
+
+.link {
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  font-size: 8em;
+  line-height: 1;
+  color: #9e9ba4;
+  display: inline-block;
+  max-width: 50%;
+}
+
+.link--manko {
+  color: #b1c0b2;
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  font-style: italic;
+  padding: 0.65em 0 0.8em;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+.link--manko:hover {
+  color: #1e1a1b;
+}
+
+.link--manko::before,
+.link--manko::after {
+  content: "";
+  position: absolute;
+  border-width: 4px 0;
+  border-style: solid;
+  border-color: #fff;
+  pointer-events: none;
+  -webkit-transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 1, 1);
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.link--manko::before {
+  width: 50%;
+  left: 25%;
+  height: 80%;
+  top: 10%;
+}
+
+.link--manko::after {
+  width: 30%;
+  left: 35%;
+  height: 100%;
+  top: 0;
+}
+
+.link--manko:hover::before,
+.link--manko:hover::after {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+}
+
+.link--manko span {
+  color: #60ab64;
+  font-weight: 400;
+  position: absolute;
+  font-size: 0.2em;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.link--manko span:first-of-type {
+  bottom: 100%;
+  margin-bottom: 15px;
+  -webkit-transform: scale3d(0.8, 0.8, 1) translate3d(0, 10px, 0);
+  transform: scale3d(0.8, 0.8, 1) translate3d(0, 10px, 0);
+}
+
+.link--manko span:last-of-type {
+  top: 100%;
+  margin-top: 10px;
+  -webkit-transform: scale3d(0.8, 0.8, 1) translate3d(0, -10px, 0);
+  transform: scale3d(0.8, 0.8, 1) translate3d(0, -10px, 0);
+}
+
+.link--manko:hover span {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.link--manko:hover span:first-of-type {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+.link--manko:hover span:last-of-type {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
