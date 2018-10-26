@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var paycontroller = require("../controller/payController");
+var orderController = require("../controller/orderController");
 const Product = require("../models/product");
 
 const authCheck = function(req, res, next) {
@@ -61,6 +62,9 @@ router.get("/user/profile", authCheck, function(req, res, next) {
 
 router.post("/payment/payu/payment", paycontroller.payUMoneyPayment);
 router.post("/payment/payu/response", paycontroller.payUMoneyPayment);
+
+router.post("/orders/new", orderController.newOrder);
+
 router.get("/checkout", function(req, res, next) {
   res.render("checkout");
 });

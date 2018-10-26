@@ -1,13 +1,16 @@
 <div class="div-inline mdl-textfield mdl-js-textfield">
-    <input class="mdl-textfield__input" type="text" id="height">
+    <label>Height: </label>
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="1" id="height" value="3">
     <label class="mdl-textfield__label" for="height">height</label>
 </div>
 <div class="div-inline mdl-textfield mdl-js-textfield">
-    <input class="mdl-textfield__input" type="text" id="width">
+    <label>Width: </label>
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="1" id="width" value="3">
     <label class="mdl-textfield__label" for="width">width</label>
 </div>
 <div class="div-inline mdl-textfield mdl-js-textfield">
-    <input class="mdl-textfield__input" type="text" id="quantity">
+    <label>Quantity: </label>
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="quantity" value="10">
     <label class="mdl-textfield__label" for="quantity">quantity</label>
 </div>
 <ul class="mdl-list">
@@ -25,7 +28,7 @@
                 <span class="mdl-list__item-secondary-action">
                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-{{@../key}}-{{this.name}}">
                         <input type="radio" id="list-{{@../key}}-{{this.name}}" class="mdl-radio__button" name="{{@../key}}"
-                            value="{{@../key}},{{this.name}},{{this.price}}" />
+                            value="{{@../key}},{{this.name}},{{this.price}}" checked />
                     </label>
                 </span>
             </li>
