@@ -1,3 +1,13 @@
+html {
+  overflow: hidden;
+}
+h2,
+h3 {
+  text-align: center;
+}
+.container {
+  min-height: 460px;
+}
 .product-card-wide.mdl-card {
   width: 100%;
 }
@@ -6,12 +16,34 @@
   height: 176px;
   background: url("/images/pcb-assembly-1.jpg") center / cover;
 }
-
-.div-inline {
-  width: 20%;
+.pcb-capabilities {
+  margin: 0 1%;
+  padding: 5px;
 }
+.pcb-capabilities table {
+  width: 100%;
+}
+.pcb-capabilities .intro {
+  padding: 2em;
+  margin: 5px;
+}
+.pcb-capabilities .intro .p {
+  text-align: left;
+  font-size: medium;
+}
+.instant-pcb {
+  margin: 0 5px;
+  padding: 20px;
+}
+.instant-pcb .content {
+  height: 100px;
+}
+.instant-pcb p {
+  text-align: left;
+  font-size: medium;
+}
+
 .order-pcb {
-  text-align: center;
   padding: 2em;
   min-height: 200px;
 }
@@ -48,7 +80,6 @@
   background-color: #e3e0e6;
 }
 .services h3 {
-  text-align: center;
   font-weight: bold;
   padding-top: 0.3em;
   margin: 0;
