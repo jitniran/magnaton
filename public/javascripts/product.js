@@ -1,75 +1,87 @@
-const product1 = document.getElementById("PCB1");
-
-const calProduct1 = document
-  .getElementById("calc")
-  .addEventListener("click", product1Control(false));
-const buyProduct1 = document
-  .getElementById("buy")
-  .addEventListener("click", product1Control(true));
+const title = document.getElementById("product").innerHTML;
+let calProduct = document.getElementById("calc");
+calProduct.addEventListener(
+  "click",
+  () => {
+    productControl(false);
+  },
+  false
+);
+let buyProduct = document.getElementById("buy");
+buyProduct.addEventListener(
+  "click",
+  () => {
+    productControl(true);
+  },
+  false
+);
 
 function calculatePrice(height, width, quantity, items) {
   //options of attributes
-  console.log(height, width, quantity);
   let tax = 0.18;
 
   let totalPrice = 0;
   let z = parseInt(height) * parseInt(width);
 
   let f = z * parseInt(quantity);
-
-  items.every(item => {
-    console.log(item);
-    totalPrice += f * parseInt(item[2]);
-  });
-  console.log(totalPrice);
+  for (let i = 0; i < items.length; i++) {
+    let item = items[i];
+    if (item[0] == "layers") {
+      totalPrice += parseInt(item[2]);
+    } else totalPrice += f * parseInt(item[2]);
+  }
   totalPrice += tax * totalPrice;
   return totalPrice;
 }
 
-function buyProduct(title, height, width, quanity, items, price) {
-  let formData = new FormData();
-
-  formData.append("title", title);
-  formData.append("height", height);
-  formData.append("width", width);
-  formData.append("quantity", quanity);
-  formData.append("price", price);
-  formData.append("items", items);
-
+function orderProduct(height, width, quantity, items, price) {
+  let product = {
+    title: title,
+    height: height,
+    width: width,
+    quantity: quantity,
+    items: items
+  };
   fetch("/orders/new", {
     method: "POST",
-    body: formData
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify({ product: product, price: price })
   }).then(function(response) {});
 }
 
-function product1Control(buy) {
-  let inputs = product1.getElementsByTagName("input");
+function productControl(buy) {
+  let inputs = document.querySelectorAll("input[type=text]");
+  let radios = document.querySelectorAll("input[type=radio]");
   let p1 = [];
-  let height, width, quanity;
+  let height, width, quantity;
   for (let i = 0; i < inputs.length; i++) {
     let ele = inputs[i];
-    if ((ele.type = "text")) {
+    if (ele.type == "text") {
       switch (ele.id) {
         case "height":
           height = ele.value;
         case "width":
           width = ele.value;
-        case "quantiy":
+        case "quantity":
           quantity = ele.value;
         default:
           continue;
       }
-    } else if (ele.type === "radio" && ele.checked) {
-      console.log("hello " + ele.value);
-      option = ele.value.split(",");
-      console.log(option);
-      p1.push(option);
+    }
+  }
+  for (let i = 0; i < radios.length; i++) {
+    let ele = radios[i];
+    if (ele.checked) {
+      let val = ele.value.split(",");
+      p1.push(val);
     }
   }
   let price = calculatePrice(height, width, quantity, p1);
   priceEle = document.getElementById("price");
   priceEle.innerHTML = "price " + price;
-  // if (buy) {
-  //   buyProduct(height, width, quanity, p1, price);
-  // }
+  if (buy) {
+    orderProduct(height, width, quantity, p1, price);
+  }
 }

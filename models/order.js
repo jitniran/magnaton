@@ -5,7 +5,7 @@ var orderSchema = new Schema(
   {
     price: Number,
     product: Schema.Types.Mixed,
-    txnid: Number,
+    txnid: String,
     status: String,
     user: { type: Schema.Types.ObjectId, ref: "User" }
   },

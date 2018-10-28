@@ -1,6 +1,7 @@
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
+var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var expressHbs = require("express-handlebars");
@@ -30,7 +31,7 @@ app.engine(
 app.set("view engine", ".hbs");
 
 app.use(logger("dev"));
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
