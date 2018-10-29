@@ -10,14 +10,22 @@ var indexRouter = require("./routes/index");
 const passportSetup = require("./config/passport_setup");
 const cookieSession = require("cookie-session");
 const session = require("express-session");
+const keys = require("./config/keys");
 // const MongoStore = require("connect-mongo")(session); use mongo store for heavy lifting
 const passport = require("passport");
 
 var app = express();
-
+let url = "mongodb://ds145043.mlab.com:45043/pcb";
 mongoose.connect(
-  "mongodb://localhost:27017/pcb",
-  { useNewUrlParser: true }
+  // "mongodb://localhost:27017/pcb",
+  url,
+  {
+    auth: {
+      user: keys.db.user,
+      password: keys.db.password
+    },
+    useNewUrlParser: true
+  }
 );
 // view engine setup
 app.engine(
