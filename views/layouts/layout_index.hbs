@@ -21,36 +21,7 @@
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             {{> header}}
             <main class=" container mdl-layout__content">
-                <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
-                    <div class="page-content">
-                        {{> home}}
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-2">
-                    <div class="page-content">
-                        {{> instant_pcb}}
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-3">
-                    <div class="page-content">
-                        {{> pcb_capabilities}}
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-4">
-                    <div class="page-content">
-                        {{> home_automation}}
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-5">
-                    <div class="page-content">
-                        {{> about_us}}
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-6">
-                    <div class="page-content">
-                        {{> contact_us}}
-                    </div>
-                </section>
+                {{{body}}}
                 {{> footer}}
             </main>
         </div>
