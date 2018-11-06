@@ -19,18 +19,27 @@ const authCheck = function(req, res, next) {
 /* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("index", {
-    title: "Magnaton",
     user: req.user,
     layout: "layout_index"
   });
 });
 
-// GET product page
-router.get("/product", function(req, res, next) {
-  Product.find().then(products => {
+// GET product2 page
+router.get("/product1", function(req, res, next) {
+  Product.findOne({ title: "Proto PCB" }).then(product => {
     res.render("product", {
-      title: "Magnaton",
-      products: products,
+      product: product,
+      user: req.user
+    });
+  });
+});
+
+// GET product2 page
+router.get("/product2", function(req, res, next) {
+  Product.findOne({ title: "Standard PCB" }).then(product => {
+    console.log("here", product);
+    res.render("product", {
+      product: product,
       user: req.user
     });
   });
@@ -81,7 +90,6 @@ router.get("/instant_quote", function(req, res, next) {
 router.get("/aboutpcb", function(req, res, next) {});
 
 router.get("/homeautomation", function(req, res, next) {});
-
 
 router.get("/contact", function(req, res, next) {});
 module.exports = router;

@@ -17,7 +17,8 @@
     <div id="prodcut-1">
         {{#each product.items }}
         <div class="mdl-grid">
-            {{#if @index}}
+            {{#if this}}
+            {{#if @index }}
             <label class="mdl-cell mdl-cell--3-col">{{ stringHelper @key}} :</label>
             {{/if}}
             {{#each this }}
@@ -33,6 +34,7 @@
                 </span>
             </li>
             {{/each}}
+            {{/if}}
         </div>
         {{/each}}
     </div>
