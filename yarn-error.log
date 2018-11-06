@@ -1,11 +1,11 @@
 Arguments: 
-  /home/jitniran/.nvm/versions/node/v10.5.0/bin/node /usr/share/yarn/bin/yarn.js add cokkie-session
+  /home/jitniran/.nvm/versions/node/v10.5.0/bin/node /usr/share/yarn/bin/yarn.js start
 
 PATH: 
   /home/jitniran/.nvm/versions/node/v10.5.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 Yarn version: 
-  1.10.1
+  1.12.1
 
 Node version: 
   10.5.0
@@ -14,17 +14,12 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/cokkie-session: Not found
-      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:61073:18)
-      at Request.self.callback (/usr/share/yarn/lib/cli.js:120166:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:121138:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:121060:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1081:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  SyntaxError: /media/jitniran/coding/pcb/package.json: Unexpected token / in JSON at position 79
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1166:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:92:30)
+      at /usr/share/yarn/lib/cli.js:103:13
 
 npm manifest: 
   {
@@ -32,10 +27,16 @@ npm manifest:
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "start": "node ./bin/www"
+      // "start": "forever start --minUptime 1000 --spinSleepTime 1000 bin/www",
+      // "stop": "forever stop bin/www"
+      "start": "node bin/www"
     },
     "dependencies": {
+      "body-parser": "^1.18.3",
+      "connect-multiparty": "^2.2.0",
       "cookie-parser": "~1.4.3",
+      "cookie-session": "^2.0.0-beta.3",
+      "crypto": "^1.0.1",
       "debug": "~2.6.9",
       "express": "~4.16.0",
       "express-handlebars": "^3.0.0",
@@ -119,7 +120,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
     integrity sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==
   
-  body-parser@1.18.3:
+  body-parser@1.18.3, body-parser@^1.18.3:
     version "1.18.3"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
     integrity sha1-WykhmP/dVTs6DyDe0FkrlWlVyLQ=
@@ -190,6 +191,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
     integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
   
+  connect-multiparty@^2.2.0:
+    version "2.2.0"
+    resolved "https://registry.yarnpkg.com/connect-multiparty/-/connect-multiparty-2.2.0.tgz#b4932482dba298f82b8a54b70fb60ec5d72393c3"
+    integrity sha512-zKcpA7cuXGEhuw9Pz7JmVCFmp85jzGLGm/iiagXTwyEAJp4ypLPtRS/V4IGuGb9KjjrgHBs6P/gDCpZHnFzksA==
+    dependencies:
+      http-errors "~1.7.0"
+      multiparty "~4.2.1"
+      on-finished "~2.3.0"
+      qs "~6.5.2"
+      type-is "~1.6.16"
+  
   content-disposition@0.5.2:
     version "0.5.2"
     resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
@@ -208,6 +220,16 @@ Lockfile:
       cookie "0.3.1"
       cookie-signature "1.0.6"
   
+  cookie-session@^2.0.0-beta.3:
+    version "2.0.0-beta.3"
+    resolved "https://registry.yarnpkg.com/cookie-session/-/cookie-session-2.0.0-beta.3.tgz#4e446bd9f85bd7e27d3e226f4e99af12011a4386"
+    integrity sha512-zyqm5tA0z9yMEB/xyP7lnRnqp8eLR2e0dap+9+rBwVigla9yPKn8XTL1jJymog8xjfrowqW2o5LUjixQChkqrw==
+    dependencies:
+      cookies "0.7.1"
+      debug "3.1.0"
+      on-headers "~1.0.1"
+      safe-buffer "5.1.1"
+  
   cookie-signature@1.0.6:
     version "1.0.6"
     resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -218,10 +240,23 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
     integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
   
+  cookies@0.7.1:
+    version "0.7.1"
+    resolved "https://registry.yarnpkg.com/cookies/-/cookies-0.7.1.tgz#7c8a615f5481c61ab9f16c833731bcb8f663b99b"
+    integrity sha1-fIphX1SBxhq58WyDNzG8uPZjuZs=
+    dependencies:
+      depd "~1.1.1"
+      keygrip "~1.0.2"
+  
   crc@3.4.4:
     version "3.4.4"
     resolved "https://registry.yarnpkg.com/crc/-/crc-3.4.4.tgz#9da1e980e3bd44fc5c93bf5ab3da3378d85e466b"
     integrity sha1-naHpgOO9RPxck79as9ozeNheRms=
+  
+  crypto@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/crypto/-/crypto-1.0.1.tgz#2af1b7cad8175d24c8a1b0778255794a21803037"
+    integrity sha512-VxBKmeNcqQdiUQUW2Tzq0t377b54N2bMtXO/qiLa+6eRRmmC4qT3D4OnTGoT/U6O9aklQ/jTwbOtRMTTY8G0Ig==
   
   debug@2.6.9, debug@~2.6.9:
     version "2.6.9"
@@ -341,6 +376,13 @@ Lockfile:
       utils-merge "1.0.1"
       vary "~1.1.2"
   
+  fd-slicer@1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
+    integrity sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
+    dependencies:
+      pend "~1.2.0"
+  
   finalhandler@1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.1.tgz#eebf4ed840079c83f4249038c9d703008301b105"
@@ -435,6 +477,17 @@ Lockfile:
       setprototypeof "1.1.0"
       statuses ">= 1.4.0 < 2"
   
+  http-errors@~1.7.0:
+    version "1.7.1"
+    resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.7.1.tgz#6a4ffe5d35188e1c39f872534690585852e1f027"
+    integrity sha512-jWEUgtZWGSMba9I1N3gc1HmvpBUaNC9vDdA46yScAdp+C5rdEuKWUBLWTQpW9FwSWSbYYs++b6SDCxf9UEJzfw==
+    dependencies:
+      depd "~1.1.2"
+      inherits "2.0.3"
+      setprototypeof "1.1.0"
+      statuses ">= 1.5.0 < 2"
+      toidentifier "1.0.0"
+  
   iconv-lite@0.4.23:
     version "0.4.23"
     resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
@@ -474,6 +527,11 @@ Lockfile:
     version "2.3.0"
     resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.0.tgz#ef33c42e9024dce511eeaf440cd684f3af1fc769"
     integrity sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg==
+  
+  keygrip@~1.0.2:
+    version "1.0.3"
+    resolved "https://registry.yarnpkg.com/keygrip/-/keygrip-1.0.3.tgz#399d709f0aed2bab0a059e0cdd3a5023a053e1dc"
+    integrity sha512-/PpesirAIfaklxUzp4Yb7xBper9MwP6hNRA6BGGUFCgbJ+BM5CKBtsoxinNXkLHAr+GXS1/lSlF2rP7cv5Fl+g==
   
   kind-of@^3.0.2:
     version "3.2.2"
@@ -626,6 +684,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
     integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
   
+  multiparty@~4.2.1:
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/multiparty/-/multiparty-4.2.1.tgz#d9b6c46d8b8deab1ee70c734b0af771dd46e0b13"
+    integrity sha512-AvESCnNoQlZiOfP9R4mxN8M9csy2L16EIbWIkt3l4FuGti9kXBS8QVzlfyg4HEnarJhrzZilgNFlZtqmoiAIIA==
+    dependencies:
+      fd-slicer "1.1.0"
+      http-errors "~1.7.0"
+      safe-buffer "5.1.2"
+      uid-safe "2.1.5"
+  
   negotiator@0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
@@ -728,6 +796,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
     integrity sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=
   
+  pend@~1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
+    integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
+  
   promise@^7.0.0:
     version "7.3.1"
     resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
@@ -743,7 +816,7 @@ Lockfile:
       forwarded "~0.1.2"
       ipaddr.js "1.8.0"
   
-  qs@6.5.2:
+  qs@6.5.2, qs@~6.5.2:
     version "6.5.2"
     resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
     integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
@@ -797,6 +870,11 @@ Lockfile:
     integrity sha1-YTObci/mo1FWiSENJOFMlhSGE+8=
     dependencies:
       align-text "^0.1.1"
+  
+  safe-buffer@5.1.1:
+    version "5.1.1"
+    resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
+    integrity sha512-kKvNJn6Mm93gAczWVJg7wH+wGYWNrDHdWvpUmHyEsgCtIwwo3bqPtV4tR5tuPaUhTOo/kvhVwd8XwwOllGYkbg==
   
   safe-buffer@5.1.2, safe-buffer@^5.1.2:
     version "5.1.2"
@@ -883,7 +961,7 @@ Lockfile:
     dependencies:
       memory-pager "^1.0.2"
   
-  "statuses@>= 1.4.0 < 2":
+  "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2":
     version "1.5.0"
     resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
     integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
@@ -892,6 +970,11 @@ Lockfile:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
     integrity sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew==
+  
+  toidentifier@1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
+    integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
   
   type-is@~1.6.16:
     version "1.6.16"
@@ -924,7 +1007,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
     integrity sha1-bgkk1r2mta/jSeOabWMoUKD4grc=
   
-  uid-safe@~2.1.5:
+  uid-safe@2.1.5, uid-safe@~2.1.5:
     version "2.1.5"
     resolved "https://registry.yarnpkg.com/uid-safe/-/uid-safe-2.1.5.tgz#2b3d5c7240e8fc2e58f8aa269e5ee49c0857bd3a"
     integrity sha512-KPHm4VL5dDXKz01UuEd88Df+KzynaohSL9fBh096KWAxSKZQDI2uBrVqtvRM4rwrIrRRKsdLNML/lnaaVSRioA==

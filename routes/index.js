@@ -82,6 +82,6 @@ router.get("/aboutpcb", function(req, res, next) {});
 
 router.get("/homeautomation", function(req, res, next) {});
 
-router.get("/contact", function(req, res, next) {});
 
+router.get("/contact", function(req, res, next) {});
 module.exports = router;
