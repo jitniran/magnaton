@@ -224,3 +224,17 @@ h3 {
   -webkit-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
+
+.portfolio-max-width {
+  max-width: 900px;
+  margin: auto;
+}
+
+.portfolio-contact .mdl-textfield {
+  width: 100%;
+}
+
+.portfolio-contact form {
+  max-width: 550px;
+  margin: auto;
+}
