@@ -29,8 +29,7 @@ router.get("/product1", function(req, res, next) {
   Product.findOne({ title: "Proto PCB" }).then(product => {
     res.render("product", {
       product: product,
-      user: req.user,
-      layout: "layout"
+      user: req.user
     });
   });
 });
@@ -40,8 +39,7 @@ router.get("/product2", function(req, res, next) {
   Product.findOne({ title: "Standard PCB" }).then(product => {
     res.render("product", {
       product: product,
-      user: req.user,
-      layout: "layout"
+      user: req.user
     });
   });
 });

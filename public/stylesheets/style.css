@@ -8,13 +8,18 @@ h3 {
 .container {
   min-height: 460px;
 }
+.product-card-wide h2 {
+  text-align: left;
+  margin: 0;
+}
 .product-card-wide.mdl-card {
   width: 100%;
+  text-align: left;
 }
 .product-card-wide > .mdl-card__title {
   color: blue;
   height: 176px;
-  background: url("/images/pcb-assembly-1.jpg") center / cover;
+  background: url("/images/pcb-assembly.jpg") center / cover;
 }
 .pcb-capabilities {
   margin: 0 1%;
