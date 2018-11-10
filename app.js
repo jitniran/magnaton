@@ -15,15 +15,16 @@ const keys = require("./config/keys");
 const passport = require("passport");
 
 var app = express();
-let url = "mongodb://ds145043.mlab.com:45043/pcb";
+// let url = "mongodb://ds145043.mlab.com:45043/pcb";
+
 mongoose.connect(
-  // "mongodb://localhost:27017/pcb",
-  url,
+  "mongodb://localhost:27017/pcb",
+  // url,
   {
-    auth: {
-      user: keys.db.user,
-      password: keys.db.password
-    },
+    // auth: {
+    //   user: keys.db.user,
+    //   password: keys.db.password
+    // },
     useNewUrlParser: true
   }
 );

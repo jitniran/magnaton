@@ -1,0 +1,19 @@
+<div class="container">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{this.updatedAt}}</td>
+                <td>{{this.status}}</td>
+                <td><a href="/checkout?id={{this._id}}" class="mdl-button--raised mdl-button mdl-js-button mdl-button--accent">checkout</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+</div>

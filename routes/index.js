@@ -75,10 +75,9 @@ router.post("/payment/payu/payment", paycontroller.payUMoneyPayment);
 router.post("/payment/payu/response", paycontroller.payUMoneyPayment);
 
 router.post("/orders/new", orderController.newOrder);
+router.get("/user/orders", orderController.allOrders);
 
-router.get("/checkout", function(req, res, next) {
-  res.render("checkout");
-});
+router.get("/checkout", orderController.checkout);
 
 //pages
 

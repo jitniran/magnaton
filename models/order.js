@@ -7,7 +7,9 @@ var orderSchema = new Schema(
     product: Schema.Types.Mixed,
     txnid: String,
     status: String,
-    user: { type: Schema.Types.ObjectId, ref: "User" }
+    userId: Number,
+    uploaded: Boolean,
+    paid: Boolean
   },
   {
     timestamps: true

@@ -6,7 +6,7 @@ h3 {
   text-align: center;
 }
 .container {
-  min-height: 460px;
+  min-height: 500px;
 }
 .product-card-wide h2 {
   text-align: left;
@@ -56,12 +56,23 @@ h3 {
   width: 100px;
   max-height: 100px;
 }
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
 .material-icons.md-48 {
   font-size: 48px;
 }
 
 .material-icons.md-72 {
   font-size: 72px;
+}
+
+.mdl-button--icon {
+  font-size: 32px;
+  height: 48px;
+  min-width: 48px;
+  width: 48px;
 }
 
 .magnaton-image {
@@ -242,4 +253,8 @@ h3 {
 .portfolio-contact form {
   max-width: 550px;
   margin: auto;
+}
+.list-item {
+  color: black;
+  text-decoration: none;
 }
