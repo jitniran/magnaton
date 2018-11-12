@@ -81,13 +81,17 @@ router.get("/checkout", orderController.checkout);
 
 //pages
 
-router.get("/instant_quote", function(req, res, next) {
-  res.render("instant_quote", { user: req.user });
+router.get("/help", function(req, res, next) {
+  res.render("help", { user: req.user });
 });
 
-router.get("/aboutpcb", function(req, res, next) {});
+router.get("/privacy", function(req, res, next) {
+  res.render("help", { user: req.user });
+});
 
-router.get("/homeautomation", function(req, res, next) {});
+router.get("/faq", function(req, res, next) {
+  res.render("help", { user: req.user });
+});
 
-router.get("/contact", function(req, res, next) {});
+
 module.exports = router;
