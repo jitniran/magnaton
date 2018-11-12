@@ -1,3 +1,4 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 html {
   overflow: hidden;
 }
@@ -40,8 +41,12 @@ h3 {
   margin: 0 5px;
   padding: 20px;
 }
+.instant-pcb .action {
+  margin: 5px;
+  padding: 2px;
+}
 .instant-pcb .content {
-  height: 100px;
+  height: 450px;
 }
 .instant-pcb p {
   text-align: left;
@@ -86,6 +91,9 @@ h3 {
 
 .product-card {
   height: 320px;
+}
+.product-card img {
+  height: 80%;
 }
 
 .product-card a {
@@ -257,4 +265,55 @@ h3 {
 .list-item {
   color: black;
   text-decoration: none;
+}
+
+.social-icon {
+  color: #fff;
+}
+ul.social-icons {
+  margin-top: 10px;
+}
+.social-icons li {
+  vertical-align: top;
+  display: inline;
+}
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+}
+.fa-facebook {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #322f30;
+}
+.fa-facebook:hover {
+  background-color: #3d5b99;
+}
+.fa-twitter {
+  padding: 10px 12px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #322f30;
+}
+.fa-twitter:hover {
+  background-color: #00aced;
+}
+.fa-google-plus {
+  padding: 10px 9px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #322f30;
+}
+.fa-google-plus:hover {
+  background-color: #e25714;
 }
