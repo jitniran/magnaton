@@ -141,7 +141,6 @@ h3 {
   color: #fff;
   font-size: 1.2em;
   padding: 0.3em;
-  max-width: 25%;
   text-align: left;
 }
 
@@ -153,7 +152,6 @@ h3 {
   line-height: 1;
   color: #9e9ba4;
   display: inline-block;
-  max-width: 50%;
 }
 
 .link--manko {
@@ -247,6 +245,12 @@ h3 {
 .link--manko:hover span:last-of-type {
   -webkit-transition-delay: 0.2s;
   transition-delay: 0.2s;
+}
+
+@media only screen and (max-width: 600px) {
+  .link--manko {
+    font-size: 4em;
+  }
 }
 
 .portfolio-max-width {
