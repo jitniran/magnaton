@@ -22,9 +22,10 @@ exports.allOrders = function(req, res) {
 
 exports.checkout = function(req, res) {
   let id = req.query.id;
+  console.log(req.user);
   Order.findById({ _id: id })
     .lean()
     .exec(function(err, doc) {
-      res.render("checkout", { order: doc });
+      res.render("checkout", { user: req.user, order: doc });
     });
 };

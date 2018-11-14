@@ -20,8 +20,8 @@ exports.payUMoneyPayment = function(req, res) {
     email: "jitshakes@gmail.com",
     phone: "7406591729",
     productinfo: "Bag",
-    surl: "http://localhost:3000/product",
-    furl: "https://localhost:3000/"
+    surl: "http://localhost:3000/user/orders",
+    furl: "https://localhost:3000/user/orders"
   };
   var hashString =
     keys.payumoney.key + // Merchant Key
