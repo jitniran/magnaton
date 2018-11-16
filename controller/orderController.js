@@ -6,7 +6,8 @@ exports.newOrder = function(req, res) {
   order.price = req.body.price;
   order.product = req.body.product;
   order.userId = req.user.googleid;
-  order.status = "Payment Pending";
+  //status 1: order created 2: file uploaded 3: paid 4: delivered
+  order.status = 1;
   order.save();
   res.send({ order: order });
 };
@@ -22,10 +23,9 @@ exports.allOrders = function(req, res) {
 
 exports.checkout = function(req, res) {
   let id = req.query.id;
-  console.log(req.user);
-  Order.findById({ _id: id })
-    .lean()
-    .exec(function(err, doc) {
-      res.render("checkout", { user: req.user, order: doc });
-    });
+  if (id) {
+    res.render("checkout", { user: req.user, orderId: id });
+  } else {
+    res.send("Error");
+  }
 };

@@ -1,9 +1,9 @@
 {{> profile_details}}
 {{#if user.updated}}
-<button onclick="launchPayu()" id="checkout">checkout</button>
+<button onclick="launchPayu('{{orderId}}')" id="checkout">checkout</button>
 {{else}}
 <button disabled id="checkout">checkout</button>
 {{/if}}
-<script src="/javascripts/payment.js"></script>
 <script id="bolt" src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js" bolt- color="<color-code>"
     bolt-logo="<image path>"></script>
+<script src="/javascripts/payment.js"></script>

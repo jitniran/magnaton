@@ -73,7 +73,7 @@ router.get("/user/profile", authCheck, function(req, res, next) {
 });
 
 router.post("/payment/payu/payment", paycontroller.payUMoneyPayment);
-router.post("/payment/payu/response", paycontroller.payUMoneyPayment);
+router.post("/payment/payu/response", paycontroller.payUMoneyPaymentResponse);
 
 router.post("/orders/new", orderController.newOrder);
 router.get("/user/orders", orderController.allOrders);

@@ -1,4 +1,4 @@
-  var Handler = {
+var Handler = {
   responseHandler: function(BOLT) {
     // your payment response Code goes here, BOLT is the response object
     fetch("payment/payu/response", {
@@ -13,6 +13,7 @@
       body: JSON.stringify(BOLT.response)
     })
       .then(function(a) {
+        console.log(a.json());
         return a.json();
       })
 
@@ -25,9 +26,17 @@
   }
 };
 
-function launchPayu() {
+function launchPayu(id) {
+  console.log(id);
   fetch("/payment/payu/payment", {
-    method: "POST" // *GET, POST, PUT, DELETE, etc.
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      Accept: "application/json",
+
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({ id: id })
   })
     .then(function(response) {
       return response.json();
