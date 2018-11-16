@@ -1,4 +1,4 @@
-var Handler = {
+  var Handler = {
   responseHandler: function(BOLT) {
     // your payment response Code goes here, BOLT is the response object
     fetch("payment/payu/response", {
