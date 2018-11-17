@@ -100,6 +100,7 @@ router.post("/user/update", authCheck, function(req, res, next) {
   });
 });
 router.get("/checkout", orderController.checkout);
+router.get("/order/update", orderController.update);
 
 //pages
 

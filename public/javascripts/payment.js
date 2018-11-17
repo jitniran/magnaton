@@ -3,20 +3,15 @@ var Handler = {
     // your payment response Code goes here, BOLT is the response object
     fetch("payment/payu/response", {
       method: "POST",
-
       headers: {
         Accept: "application/json",
-
         "Content-Type": "application/json"
       },
-
       body: JSON.stringify(BOLT.response)
     })
       .then(function(a) {
-        console.log(a.json());
         return a.json();
       })
-
       .then(function(json) {
         console.log(json);
       });

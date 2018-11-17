@@ -13,7 +13,7 @@ const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 // const MongoStore = require("connect-mongo")(session); use mongo store for heavy lifting
 const passport = require("passport");
-
+const favicon = require("serve-favicon");
 var app = express();
 // let url = "mongodb://ds145043.mlab.com:45043/pcb";
 
@@ -65,6 +65,8 @@ app.use(
 //initialize session
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);

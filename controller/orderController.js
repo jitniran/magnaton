@@ -11,7 +11,15 @@ exports.newOrder = function(req, res) {
   order.save();
   res.send({ order: order });
 };
-
+exports.update = function(req, res) {
+  let txnid = req.query.id;
+  console.log("in update");
+  Order.findOne({ txnid: txnid }, function(err, order) {
+    order.status = 3;
+    order.save(function(err) {});
+  });
+  res.render("orderStatus");
+};
 exports.allOrders = function(req, res) {
   let id = req.user.googleid;
   Order.find({ userId: id })

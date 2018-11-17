@@ -84,14 +84,11 @@ exports.payUMoneyPaymentResponse = function(req, res) {
   var hash = sha.getHash("HEX");
 
   // Verify the new hash with the hash value in response
-  console.log(pd);
+
   if (hash == pd.hash) {
-    let order = Order.findone({ txnid: pd.txnid });
-    order.status = 3;
-    order.save();
-    console.log("im here " + pd.status);
-    res.send({ status: pd.status });
+    res.redirect("/order/update/?id=" + pd.txnid);
   } else {
+    console.log("hash not equal");
     res.send({ status: "Error occured" });
   }
 };
