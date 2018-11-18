@@ -13,7 +13,10 @@ var Handler = {
         return a.json();
       })
       .then(function(json) {
-        console.log(json);
+        console.log(json.status);
+        if (json.status === "success") {
+          window.location.href = "/order/update/?id=" + json.id;
+        }
       });
   },
   catchException: function(BOLT) {
@@ -22,7 +25,6 @@ var Handler = {
 };
 
 function launchPayu(id) {
-  console.log(id);
   fetch("/payment/payu/payment", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {

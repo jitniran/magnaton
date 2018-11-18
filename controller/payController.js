@@ -86,7 +86,8 @@ exports.payUMoneyPaymentResponse = function(req, res) {
   // Verify the new hash with the hash value in response
 
   if (hash == pd.hash) {
-    res.redirect("/order/update/?id=" + pd.txnid);
+    // res.redirect("/order/update/?id=" + pd.txnid);
+    res.send({ status: "success", id: pd.txnid });
   } else {
     console.log("hash not equal");
     res.send({ status: "Error occured" });

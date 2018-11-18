@@ -17,8 +17,9 @@ exports.update = function(req, res) {
   Order.findOne({ txnid: txnid }, function(err, order) {
     order.status = 3;
     order.save(function(err) {});
+    console.log("update");
+    res.render("orderStatus", { order: order });
   });
-  res.render("orderStatus");
 };
 exports.allOrders = function(req, res) {
   let id = req.user.googleid;
