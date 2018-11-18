@@ -42,13 +42,18 @@ function orderProduct(height, width, quantity, items, price) {
     quantity: quantity,
     items: items
   };
+  var snackbarContainer = document.querySelector("#toast");
+  var data = { message: "Placing order" };
+  snackbarContainer.MaterialSnackbar.showSnackbar(data);
   fetch("/orders/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
     },
     body: JSON.stringify({ product: product, price: price })
-  }).then(function(response) {});
+  }).then(function(response) {
+    window.location.href = "/user/orders";
+  });
 }
 
 function productControl(buy) {

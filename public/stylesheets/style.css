@@ -321,3 +321,6 @@ ul.social-icons {
 .fa-google-plus:hover {
   background-color: #e25714;
 }
+.nav-button {
+  margin: 5px;
+}

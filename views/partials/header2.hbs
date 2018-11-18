@@ -10,10 +10,10 @@
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             {{#if user}}
-            <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent">
-                <i class="material-icons md-36">account_circle</i>
-            </button>
-            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/logout">Logout</a>
+            <a class="mdl-button mdl-js-button mdl-button--raised nav-button mdl-js-ripple-effect mdl-button--accent"
+                href="/user/orders">Orders</a>
+            <a class="mdl-button mdl-js-button mdl-button--raised nav-button mdl-js-ripple-effect mdl-button--accent"
+                href="/logout">Logout</a>
             {{else}}
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/google">Login</a>
             {{/if}}
@@ -31,7 +31,3 @@
         {{/if}}
     </nav>
 </div>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
-    <li class="mdl-menu__item"><a href="/user/orders" class="list-item mdl-js-button">Orders</a></li>
-    <li class="mdl-menu__item"><a href="" class="list-item  mdl-js-button">Profile</a></li>
-</ul>

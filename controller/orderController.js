@@ -18,7 +18,7 @@ exports.update = function(req, res) {
     order.status = 3;
     order.save(function(err) {});
     console.log("update");
-    res.render("orderStatus", { order: order });
+    res.render("orderStatus", { user: req.user, order: order });
   });
 };
 exports.allOrders = function(req, res) {
@@ -26,7 +26,7 @@ exports.allOrders = function(req, res) {
   Order.find({ userId: id })
     .lean()
     .exec(function(err, docs) {
-      res.render("orders", { orders: docs });
+      res.render("orders", { user: req.user, orders: docs });
     });
 };
 
