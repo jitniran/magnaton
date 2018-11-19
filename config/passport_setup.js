@@ -17,7 +17,7 @@ passport.use(
   new GoogleStrategy(
     {
       //options
-      callbackURL: "/gredirect",
+      callbackURL: keys.host.url + "/gredirect",
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret
     },
