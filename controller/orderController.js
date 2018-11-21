@@ -38,3 +38,10 @@ exports.checkout = function(req, res) {
     res.send("Error");
   }
 };
+exports.statusUpdate = function(id, status) {
+  Order.findById({ _id: id }).exec(function(err, doc) {
+    doc.status = status;
+    doc.save();
+    res.send("success");
+  });
+};

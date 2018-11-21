@@ -102,6 +102,24 @@ router.post("/user/update", authCheck, function(req, res, next) {
 router.get("/checkout", orderController.checkout);
 router.get("/order/update", orderController.update);
 
+//upload and download
+router.post("/upload", function(req, res) {
+  if (Object.keys(req.files).length == 0) {
+    return res.status(400).send("no files were uploaded");
+  }
+  let sampleFile = req.files.sampleFile;
+  sampleFile.mv(__dirname + "/upload_folder/" + "file.rar", function(err) {
+    if (err) return res.status(500).send(err);
+    orderController.statusUpdate(req.query.id, 2);
+    res.send("Files uploaded");
+  });
+});
+
+router.get("/download", function(req, res) {
+  let file = __dirname + "/upload_folder/file.rar";
+  res.download(file);
+});
+
 //pages
 
 router.get("/help", function(req, res, next) {

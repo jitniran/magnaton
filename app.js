@@ -14,6 +14,7 @@ const keys = require("./config/keys");
 // const MongoStore = require("connect-mongo")(session); use mongo store for heavy lifting
 const passport = require("passport");
 const favicon = require("serve-favicon");
+const fileUpload = require("express-fileupload");
 var app = express();
 // let url = "mongodb://ds145043.mlab.com:45043/pcb";
 
@@ -86,5 +87,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+app.use(fileUpload());
 
 module.exports = app;
