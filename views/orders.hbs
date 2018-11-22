@@ -11,8 +11,28 @@
             {{#each orders}}
             <tr>
                 <td class="mdl-data-table__cell--non-numeric">{{this.updatedAt}}</td>
-                <td>{{this.status}}</td>
+                {{#if_eq this.status 1}}
+                <td>Upload File</td>
+                <td>
+                    <form ref='uploadForm' id='uploadForm' action='http://localhost:3000/upload' method='post' encType="multipart/form-data">
+                        <input type="file" name="sampleFile" />
+                        <input type="hidden" name="id" value="{{this._id}}" />
+                        <input type='submit' value='Upload!' />
+                    </form>
+                </td>
+                {{/if_eq}}
+                {{#if_eq this.status 2}}
+                <td>Payment Pending</td>
                 <td><a href="/checkout?id={{this._id}}" class="mdl-button--raised mdl-button mdl-js-button mdl-button--accent">checkout</a></td>
+                {{/if_eq}}
+                {{#if_eq this.status 3}}
+                <td>Order Placed</td>
+                <td></td>
+                {{/if_eq}}
+                {{#if_eq this.status 4}}
+                <td>Order Delivered</td>
+                <td></td>
+                {{/if_eq}}
             </tr>
             {{/each}}
         </tbody>

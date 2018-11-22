@@ -104,13 +104,14 @@ router.get("/order/update", orderController.update);
 
 //upload and download
 router.post("/upload", function(req, res) {
+  console.log("here" + req.files);
   if (Object.keys(req.files).length == 0) {
     return res.status(400).send("no files were uploaded");
   }
   let sampleFile = req.files.sampleFile;
   sampleFile.mv(__dirname + "/upload_folder/" + "file.rar", function(err) {
     if (err) return res.status(500).send(err);
-    orderController.statusUpdate(req.query.id, 2);
+    // orderController.statusUpdate(req.body.id, 2);
     res.send("Files uploaded");
   });
 });

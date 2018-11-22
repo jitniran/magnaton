@@ -18,6 +18,7 @@ const fileUpload = require("express-fileupload");
 var app = express();
 // let url = "mongodb://ds145043.mlab.com:45043/pcb";
 
+app.use(fileUpload());
 mongoose.connect(
   "mongodb://localhost:27017/pcb",
   // url,
@@ -87,7 +88,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-app.use(fileUpload());
 
 module.exports = app;
