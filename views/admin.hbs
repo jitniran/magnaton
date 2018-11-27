@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+        <h2>Download file type order id</h2>
+        <form ref='downloadForm' id='downloadForm' action='/download' method='post'>
+            <input type="text" name="id" />
+            <input type='submit' value='Download!' />
+        </form>
+    </div>
+    <div>
+        <h2>Update order status</h2>
+        <form ref='update' id='Update' action='/admin/update' method='post'>
+            <label>id:
+                <input type="text" name="id" />
+            </label>
+            <label>status
+                <input type="text" name="status">
+            </label>
+            <input type='submit' value='Update' />
+        </form>
+    </div>
+
+</div>

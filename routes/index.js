@@ -101,23 +101,32 @@ router.post("/user/update", authCheck, function(req, res, next) {
 });
 router.get("/checkout", orderController.checkout);
 router.get("/order/update", orderController.update);
-
+router.post("/admin/update", function(req, res){
+  id = req.body.id;
+  status = req.body.status;
+  orderController.statusUpdate(id, status);
+  res.send("status updated");
+});
 //upload and download
 router.post("/upload", function(req, res) {
-  console.log("here" + req.files);
   if (Object.keys(req.files).length == 0) {
     return res.status(400).send("no files were uploaded");
   }
+  let name = req.body.id;
   let sampleFile = req.files.sampleFile;
-  sampleFile.mv(__dirname + "/upload_folder/" + "file.rar", function(err) {
+  sampleFile.mv(__dirname + "/upload_folder/" + name + ".rar", function(err) {
     if (err) return res.status(500).send(err);
-    // orderController.statusUpdate(req.body.id, 2);
+    orderController.statusUpdate(name, 2);
     res.send("Files uploaded");
   });
 });
 
-router.get("/download", function(req, res) {
-  let file = __dirname + "/upload_folder/file.rar";
+router.get("/admin", authCheck, function(req, res) {
+  res.render("admin", { user: req.user });
+});
+router.post("/download", function(req, res) {
+  let id = req.body.id;
+  let file = __dirname + "/upload_folder/" + id + ".rar";
   res.download(file);
 });
 

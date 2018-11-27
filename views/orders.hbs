@@ -14,8 +14,8 @@
                 {{#if_eq this.status 1}}
                 <td>Upload File</td>
                 <td>
-                    <form ref='uploadForm' id='uploadForm' action='http://localhost:3000/upload' method='post' encType="multipart/form-data">
-                        <input type="file" name="sampleFile" />
+                    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+                        <input type="file" accept=".zip,.rar" name="sampleFile" />
                         <input type="hidden" name="id" value="{{this._id}}" />
                         <input type='submit' value='Upload!' />
                     </form>
