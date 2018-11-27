@@ -2,7 +2,7 @@
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
             <tr>
-                <th class="mdl-data-table__cell--non-numeric">Date</th>
+                <th class="mdl-data-table__cell--non-numeric">Order Id</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -10,7 +10,7 @@
         <tbody>
             {{#each orders}}
             <tr>
-                <td class="mdl-data-table__cell--non-numeric">{{this.updatedAt}}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{this._id}}</td>
                 {{#if_eq this.status 1}}
                 <td>Upload File</td>
                 <td>

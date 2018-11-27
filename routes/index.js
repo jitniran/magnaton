@@ -96,16 +96,16 @@ router.post("/user/update", authCheck, function(req, res, next) {
     user.updated = true;
 
     user.save();
-    res.send("success");
+    res.redirect("back");
   });
 });
 router.get("/checkout", orderController.checkout);
 router.get("/order/update", orderController.update);
-router.post("/admin/update", function(req, res){
+router.post("/admin/update", function(req, res) {
   id = req.body.id;
   status = req.body.status;
   orderController.statusUpdate(id, status);
-  res.send("status updated");
+  res.redirect("back");
 });
 //upload and download
 router.post("/upload", function(req, res) {
@@ -117,7 +117,7 @@ router.post("/upload", function(req, res) {
   sampleFile.mv(__dirname + "/upload_folder/" + name + ".rar", function(err) {
     if (err) return res.status(500).send(err);
     orderController.statusUpdate(name, 2);
-    res.send("Files uploaded");
+    res.redirect("back");
   });
 });
 
